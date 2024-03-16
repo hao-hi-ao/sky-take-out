@@ -15,17 +15,16 @@ import java.io.Serializable;
 @AllArgsConstructor
 @ApiModel(description = "员工登录返回的数据格式")
 public class EmployeeLoginVO implements Serializable {
-
+    // 员工id
     @ApiModelProperty("主键值")
     private Long id;
-
+    // 用户名
     @ApiModelProperty("用户名")
     private String userName;
-
+    // 姓名
     @ApiModelProperty("姓名")
     private String name;
-
+    // jwt令牌
     @ApiModelProperty("jwt令牌")
     private String token;
-
 }

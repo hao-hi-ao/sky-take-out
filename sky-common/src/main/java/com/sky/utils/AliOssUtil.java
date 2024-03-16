@@ -13,7 +13,6 @@ import java.io.ByteArrayInputStream;
 @AllArgsConstructor
 @Slf4j
 public class AliOssUtil {
-
     private String endpoint;
     private String accessKeyId;
     private String accessKeySecret;
@@ -21,10 +20,6 @@ public class AliOssUtil {
 
     /**
      * 文件上传
-     *
-     * @param bytes
-     * @param objectName
-     * @return
      */
     public String upload(byte[] bytes, String objectName) {
 

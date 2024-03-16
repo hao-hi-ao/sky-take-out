@@ -9,21 +9,18 @@ import com.sky.exception.AccountNotFoundException;
 import com.sky.exception.PasswordErrorException;
 import com.sky.mapper.EmployeeMapper;
 import com.sky.service.EmployeeService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
+@AllArgsConstructor
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
-
-    @Autowired
     private EmployeeMapper employeeMapper;
 
     /**
      * 员工登录
-     *
-     * @param employeeLoginDTO
-     * @return
      */
     public Employee login(EmployeeLoginDTO employeeLoginDTO) {
         String username = employeeLoginDTO.getUsername();
@@ -53,5 +50,4 @@ public class EmployeeServiceImpl implements EmployeeService {
         //3、返回实体对象
         return employee;
     }
-
 }

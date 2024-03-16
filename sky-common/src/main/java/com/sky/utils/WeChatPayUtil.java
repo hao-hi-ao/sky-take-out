@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.sky.properties.WeChatProperties;
 import com.wechat.pay.contrib.apache.httpclient.WechatPayHttpClientBuilder;
 import com.wechat.pay.contrib.apache.httpclient.util.PemUtil;
+import lombok.AllArgsConstructor;
 import org.apache.commons.lang.RandomStringUtils;
 import org.apache.http.HttpHeaders;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -32,22 +33,18 @@ import java.util.List;
 /**
  * 微信支付工具类
  */
+@AllArgsConstructor
 @Component
 public class WeChatPayUtil {
-
-    //微信支付下单接口地址
+    // 微信支付下单接口地址
     public static final String JSAPI = "https://api.mch.weixin.qq.com/v3/pay/transactions/jsapi";
-
-    //申请退款接口地址
+    // 申请退款接口地址
     public static final String REFUNDS = "https://api.mch.weixin.qq.com/v3/refund/domestic/refunds";
 
-    @Autowired
     private WeChatProperties weChatProperties;
 
     /**
      * 获取调用微信接口的客户端工具对象
-     *
-     * @return
      */
     private CloseableHttpClient getClient() {
         PrivateKey merchantPrivateKey = null;
@@ -74,10 +71,6 @@ public class WeChatPayUtil {
 
     /**
      * 发送post方式请求
-     *
-     * @param url
-     * @param body
-     * @return
      */
     private String post(String url, String body) throws Exception {
         CloseableHttpClient httpClient = getClient();
@@ -100,9 +93,6 @@ public class WeChatPayUtil {
 
     /**
      * 发送get方式请求
-     *
-     * @param url
-     * @return
      */
     private String get(String url) throws Exception {
         CloseableHttpClient httpClient = getClient();
@@ -129,7 +119,7 @@ public class WeChatPayUtil {
      * @param total       总金额
      * @param description 商品描述
      * @param openid      微信用户的openid
-     * @return
+     * @return todo jsapi方法返回的是什么？
      */
     private String jsapi(String orderNum, BigDecimal total, String description, String openid) throws Exception {
         JSONObject jsonObject = new JSONObject();
@@ -161,7 +151,7 @@ public class WeChatPayUtil {
      * @param total       金额，单位 元
      * @param description 商品描述
      * @param openid      微信用户的openid
-     * @return
+     * @return todo pay方法返回的是什么？
      */
     public JSONObject pay(String orderNum, BigDecimal total, String description, String openid) throws Exception {
         //统一下单，生成预支付交易单
@@ -212,7 +202,7 @@ public class WeChatPayUtil {
      * @param outRefundNo   商户退款单号
      * @param refund        退款金额
      * @param total         原订单金额
-     * @return
+     * @return todo refund方法返回的是什么？
      */
     public String refund(String outTradeNo, String outRefundNo, BigDecimal refund, BigDecimal total) throws Exception {
         JSONObject jsonObject = new JSONObject();

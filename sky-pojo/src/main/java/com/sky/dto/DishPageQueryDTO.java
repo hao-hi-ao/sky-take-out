@@ -6,17 +6,15 @@ import java.io.Serializable;
 
 @Data
 public class DishPageQueryDTO implements Serializable {
-
+    // 页码
     private int page;
-
+    // 每页记录数
     private int pageSize;
-
+    // 名称（模糊）
     private String name;
-
-    //分类id
+    // 分类id
     private Integer categoryId;
-
-    //状态 0表示禁用 1表示启用
+    // 状态 0表示禁用 1表示启用
     private Integer status;
 
 }
